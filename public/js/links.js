@@ -42,12 +42,13 @@ document.getElementById("loginBtn").addEventListener("click", async function()
 document.getElementById("logoutBtn").addEventListener("click", async function()
 { 
   const response = await fetch('/logout', {
-    method: 'GET',
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
   });
 
   if (response.ok) {
-    document.location.replace('/logout');
+    document.location.replace('/');
   } else {
-    alert('Failed to navigate to logout');
+    alert(response.statusText);
   }
 });

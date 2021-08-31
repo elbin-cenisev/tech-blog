@@ -27,6 +27,18 @@ router.get('/login', async (req, res) => {
   }
 });
 
+router.post('/logout', async (req, res) => {
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.status(204).end();
+      console.log("You have been logged out")
+    });
+  } else {
+    console.log("Nobody's logged in")
+    res.status(404).end();
+  }
+});
+
 
 
 module.exports = router;
