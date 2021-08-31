@@ -1,9 +1,15 @@
-document.getElementById("homeBtn").addEventListener("click", function()
+document.getElementById("homeBtn").addEventListener("click", async function()
 { 
-  alert("Hello Home!"); 
+  const response = await fetch('/', {
+    method: 'GET',
 });
 
-document.getElementById("dashboardBtn").addEventListener("click", function()
+  if (response.ok) {
+    document.location.replace('/');
+  } else {
+    alert('Failed to navigate to Home');
+  }
+});
 { 
   alert("Hello Dashboard!"); 
 });
