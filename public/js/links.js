@@ -10,8 +10,13 @@ document.getElementById("homeBtn").addEventListener("click", async function()
     alert('Failed to navigate to Home');
   }
 });
+
+document.getElementById("dashboardBtn").addEventListener("click", async function()
 { 
-  alert("Hello Dashboard!"); 
+  console.log("Responding");
+  
+  const response = await fetch('/dashboard', {
+    method: 'GET',
 });
 
 document.getElementById("loginBtn").addEventListener("click", function()
