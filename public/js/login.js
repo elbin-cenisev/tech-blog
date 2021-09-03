@@ -1,6 +1,5 @@
 // Register the user and log them in automatically
 registerBtn.addEventListener("click", async function () {
-    alert("You pressed the register button");
     event.preventDefault();
 
     const name = document.querySelector('#userName').value.trim();
