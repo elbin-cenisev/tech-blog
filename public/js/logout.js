@@ -1,4 +1,4 @@
-document.querySelector('#logoutBtn').addEventListener('click', async function () {
+document.querySelector('#logoutLink').addEventListener('click', async function () {
     const response = await fetch('/logout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

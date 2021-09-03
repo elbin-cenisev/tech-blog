@@ -13,14 +13,14 @@
       Tech Blog
     </h1>
     <nav>
-      <button id="homeBtn">Home</button> |
-      <button id="dashboardBtn">Dashboard</button> |
+      <button id="homeLink">Home</button> |
+      <button id="dashboardLink">Dashboard</button> |
 
       <!-- Only display the login/logout options when appropriate -->
       {{#if logged_in}}
-      <button id="logoutBtn">Logout</button> |
+      <button id="logoutLink">Logout</button> |
       {{else}}
-      <button id="loginBtn">Login</button>
+      <button id="loginLink">Login</button>
       {{/if}}
 
     </nav>

@@ -1,4 +1,4 @@
-document.getElementById("homeBtn").addEventListener("click", async function()
+document.getElementById("homeLink").addEventListener("click", async function()
 { 
   const response = await fetch('/', {
     method: 'GET',
@@ -11,7 +11,7 @@ document.getElementById("homeBtn").addEventListener("click", async function()
   }
 });
 
-document.getElementById("dashboardBtn").addEventListener("click", async function()
+document.getElementById("dashboardLink").addEventListener("click", async function()
 { 
   const response = await fetch('/dashboard', {
     method: 'GET',
@@ -24,15 +24,15 @@ document.getElementById("dashboardBtn").addEventListener("click", async function
   }
 });
 
-// document.getElementById("loginBtn").addEventListener("click", async function()
-// { 
-//   const response = await fetch('/login', {
-//     method: 'GET',
-//   });
+document.getElementById("loginLink").addEventListener("click", async function()
+{ 
+  const response = await fetch('/login', {
+    method: 'GET',
+  });
 
-//   if (response.ok) {
-//     document.location.replace('/login');
-//   } else {
-//     alert('Failed to navigate to Login');
-//   }
-// });
+  if (response.ok) {
+    document.location.replace('/login');
+  } else {
+    alert('Failed to navigate to Login');
+  }
+});
