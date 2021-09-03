@@ -15,8 +15,14 @@
     <nav>
       <button id="homeBtn">Home</button> |
       <button id="dashboardBtn">Dashboard</button> |
-      <button id="loginBtn">Login</button> |
-      <button id="logoutBtn">Logout</button></a>
+
+      <!-- Only display the login/logout options when appropriate -->
+      {{#if logged_in}}
+      <button id="logoutBtn">Logout</button> |
+      {{else}}
+      <button id="loginBtn">Login</button>
+      {{/if}}
+
     </nav>
   </header>
   <main class="container container-fluid mt-5">
@@ -24,6 +30,8 @@
   </main>
   <footer>
     <script src="/js/links.js"></script>
+    <script src="/js/login.js"></script>
+    <script src="/js/logout.js"></script>
   </footer>
 </body>
 

@@ -1,5 +1,6 @@
-// Handles new user registration
-document.getElementById("registerBtn").addEventListener("click", async function () {
+// Register the user and log them in automatically
+registerBtn.addEventListener("click", async function () {
+    alert("You pressed the register button");
     event.preventDefault();
 
     const name = document.querySelector('#userName').value.trim();
@@ -21,26 +22,26 @@ document.getElementById("registerBtn").addEventListener("click", async function 
     }
 });
 
-// Handles user login
-document.getElementById("loginBtn").addEventListener("click", async function () {
-    alert("HELLOOOOO???");
-    // event.preventDefault();
+// // Handles user login
+// document.getElementById("loginBtn").addEventListener("click", async function () {
+//     alert("HELLOOOOO???");
+//     // event.preventDefault();
 
-    // const email = document.querySelector('#loginEmail').value.trim();
-    // const password = document.querySelector('#loginPassword').value.trim();
+//     // const email = document.querySelector('#loginEmail').value.trim();
+//     // const password = document.querySelector('#loginPassword').value.trim();
 
-    // if (email && password) {
-    //     console.log("You are here 2");
-    //     const response = await fetch('/api/users/login', {
-    //         method: 'POST',
-    //         body: JSON.stringify({ email, password }),
-    //         headers: { 'Content-Type': 'application/json' },
-    //     });
+//     // if (email && password) {
+//     //     console.log("You are here 2");
+//     //     const response = await fetch('/api/users/login', {
+//     //         method: 'POST',
+//     //         body: JSON.stringify({ email, password }),
+//     //         headers: { 'Content-Type': 'application/json' },
+//     //     });
 
-    //     if (response.ok) {
-    //         document.location.replace('/');
-    //     } else {
-    //         alert(response.statusText);
-    //     }
-    // }
-});
+//     //     if (response.ok) {
+//     //         document.location.replace('/');
+//     //     } else {
+//     //         alert(response.statusText);
+//     //     }
+//     // }
+// });
