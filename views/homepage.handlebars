@@ -1,1 +1,15 @@
 <p>This is the homepage</p>
+
+<!-- If any posts exist, display them all -->
+{{#if posts.length}}
+
+{{#each posts as |post|}}
+<h2>{{post.title}}</h2>>
+<p>{{post.text}}</p>
+{{/each}}
+
+<!-- If no posts have been made, show a generic message -->
+{{#else}}
+<h2>Nobody has posted anything!</h2>
+<p>Be the first to post something</p>
+{{#/if}}

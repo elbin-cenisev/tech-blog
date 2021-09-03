@@ -23,22 +23,24 @@ document.getElementById("registerBtn").addEventListener("click", async function 
 
 // Handles user login
 document.getElementById("loginBtn").addEventListener("click", async function () {
-    event.preventDefault();
+    alert("HELLOOOOO???");
+    // event.preventDefault();
 
-    const email = document.querySelector('#loginEmail').value.trim();
-    const password = document.querySelector('#loginPassword').value.trim();
-  
-    if (email && password) {
-      const response = await fetch('/api/users/login', {
-        method: 'POST',
-        body: JSON.stringify({ email, password }),
-        headers: { 'Content-Type': 'application/json' },
-      });
-  
-      if (response.ok) {
-        document.location.replace('/');
-      } else {
-        alert(response.statusText);
-      }
-    }
+    // const email = document.querySelector('#loginEmail').value.trim();
+    // const password = document.querySelector('#loginPassword').value.trim();
+
+    // if (email && password) {
+    //     console.log("You are here 2");
+    //     const response = await fetch('/api/users/login', {
+    //         method: 'POST',
+    //         body: JSON.stringify({ email, password }),
+    //         headers: { 'Content-Type': 'application/json' },
+    //     });
+
+    //     if (response.ok) {
+    //         document.location.replace('/');
+    //     } else {
+    //         alert(response.statusText);
+    //     }
+    // }
 });
