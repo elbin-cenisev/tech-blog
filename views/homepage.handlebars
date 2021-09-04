@@ -5,6 +5,7 @@
     <h2>{{post.title}}</h2>
     <h3>Posted by {{post.user.name}} on {{format_time post.created_date}}</h3>
     <p>{{post.text}}</p>
+    <button id="commentBtn">Comment</button>
     {{/each}}
 
     <!-- If no posts have been made, show a generic message -->
