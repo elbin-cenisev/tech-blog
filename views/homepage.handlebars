@@ -1,16 +1,17 @@
-<div class="post">
-    <!-- If any posts exist, display them all -->
-    {{#if posts.length}}
-    {{#each posts as |post|}}
+<!-- If any posts exist, display them all -->
+{{#if posts.length}}
+{{#each posts as |post|}}
+<div class="post" id="post{{post.id}}" >
     <h2>{{post.title}}</h2>
     <h3>Posted by {{post.user.name}} on {{format_time post.created_date}}</h3>
     <p>{{post.text}}</p>
-    <button id="commentBtn">Comment</button>
-    {{/each}}
+</div>
+{{/each}}
 
-    <!-- If no posts have been made, show a generic message -->
-    {{else}}
+<!-- If no posts have been made, show a generic message -->
+{{else}}
+<div id="post0" class="post">
     <h2>Nobody has posted anything!</h2>
     <p>Be the first to post something</p>
-    {{/if}}
 </div>
+{{/if}}

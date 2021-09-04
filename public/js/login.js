@@ -1,3 +1,16 @@
+document.getElementById("loginLink").addEventListener("click", async function()
+{ 
+  const response = await fetch('/login', {
+    method: 'GET',
+  });
+
+  if (response.ok) {
+    document.location.replace('/login');
+  } else {
+    alert('Failed to navigate to Login');
+  }
+});
+
 // Register the user and log them in automatically
 document.querySelector('#registerBtn').addEventListener("click", async function () {
     event.preventDefault();
@@ -7,7 +20,7 @@ document.querySelector('#registerBtn').addEventListener("click", async function 
     const password = document.querySelector('#userPassword').value.trim();
 
     if (name && email && password) {
-        const response = await fetch('/api/users/register', {
+        const response = await fetch('/api/user/register', {
             method: 'POST',
             body: JSON.stringify({ name, email, password }),
             headers: { 'Content-Type': 'application/json' },
@@ -32,7 +45,7 @@ document.querySelector('#loginBtn').addEventListener("click", async function () 
     const password = document.querySelector('#loginPassword').value.trim();
 
     if (email && password) {
-        const response = await fetch('/api/users/login', {
+        const response = await fetch('/api/user/login', {
             method: 'POST',
             body: JSON.stringify({ email, password }),
             headers: { 'Content-Type': 'application/json' },
