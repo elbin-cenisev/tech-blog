@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User } = require('./../../models');
 
+// This route is just for Insomnia testing
 router.get('/', async (req, res) => {
   try {
     const userData = await User.findAll();
@@ -54,6 +55,18 @@ router.post('/register', async (req, res) => {
     });
   } catch (err) {
     res.status(400).json(err);
+  }
+});
+
+router.post('/logout', async (req, res) => {
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.status(204).end();
+      console.log("You have been logged out")
+    });
+  } else {
+    console.log("Nobody's logged in")
+    res.status(404).end();
   }
 });
 
