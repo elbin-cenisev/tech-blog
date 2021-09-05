@@ -18,6 +18,17 @@ Post.belongsTo(User, {
 
 Post.hasMany(Comment, {
     foreignKey: 'post_id'
-})
+});
+
+// Products belongsTo Category
+Comment.belongsTo(Post, {
+    foreignKey: 'post_id'
+});
+
+Comment.belongsTo(User, {
+    foreignKey: 'user_id'
+});
+
+
 
 module.exports = { User, Post, Comment };

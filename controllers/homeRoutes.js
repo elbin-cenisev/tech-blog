@@ -1,24 +1,22 @@
 const router = require('express').Router();
-const { Post, User } = require('./../models');
+const { Post, User, Comment } = require('./../models');
 
 // Homepage: Displays all posts, and also shows the name of the user that wrote each of them
 router.get('/', async (req, res) => {
   try {
-    const postData = await Post.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
-    });
-    const posts = postData.map((post) => post.get({ plain: true }));
-    res.render('homepage', {
-      posts,
-      logged_in: req.session.logged_in 
-    });
+      const postData = await Post.findAll({
+          include: [
+              { model: User, attributes: ['name'] },
+              { model: Comment, include: [{ model: User }], },
+          ],
+      });
+      const posts = postData.map((post) => post.get({ plain: true }));
+      res.render('homepage', {
+          posts,
+          logged_in: req.session.logged_in
+      });
   } catch (err) {
-    res.status(500).json(err);
+      res.status(500).json(err);
   }
 });
 

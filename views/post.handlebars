@@ -1,7 +1,13 @@
-<div class="post" id="post{{post.id}}" >
+<div class="post" id="post{{post.id}}">
     <h2>{{post.title}}</h2>
     <h3>Posted by {{post.user.name}} on {{format_time post.created_date}}</h3>
     <p>{{post.text}}</p>
 </div>
+
+<form id="comPost{{post.id}}">
+    <label for="commentText">Comment:</label>
+    <textarea id="commentText" name="commentText" rows="4" cols="50"></textarea>
+    <button id="postComment">Post</button>
+</form>
 
 <script src="/js/post.js"></script>
