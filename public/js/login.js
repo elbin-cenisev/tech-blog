@@ -1,16 +1,3 @@
-document.getElementById("loginLink").addEventListener("click", async function()
-{ 
-  const response = await fetch('/login', {
-    method: 'GET',
-  });
-
-  if (response.ok) {
-    document.location.replace('/login');
-  } else {
-    alert('Failed to navigate to Login');
-  }
-});
-
 // Register the user and log them in automatically
 document.querySelector('#registerBtn').addEventListener("click", async function () {
     event.preventDefault();
