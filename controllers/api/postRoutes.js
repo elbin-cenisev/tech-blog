@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const withAuth = require('../../utils/auth');
+const withAuth = require('./../../utils/auth');
 const { Post, Comment, User } = require('./../../models');
 
 // For Insomnia testing: gets all posts
@@ -71,7 +71,7 @@ router.post('/', async (req, res) => {
 })
 
 // Creates a comment to a post.
-router.post('/comment', async (req, res) => {
+router.post('/comment', withAuth, async (req, res) => {
     try {
         const commentData = await Comment.create({
             text: req.body.text,

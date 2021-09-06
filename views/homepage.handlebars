@@ -1,8 +1,9 @@
 <!-- If any posts exist, display them all -->
 {{#if posts.length}}
 {{#each posts as |post|}}
+
 <div class="post" data-id="{{post.id}}">
-    <div class="postCard card mt-5" onclick="focusPost(this)">
+    <div class="postCard card mt-5">
         <div class="card-header">
             {{post.title}}
         </div>
@@ -15,7 +16,7 @@
     </div>
 
     <!-- This Comment button will reveal the comment form -->
-    <button type="button" class="commentBtn btn btn-primary mt-1" id="commentBtn{{post.id}}"
+    <button type="button" class="commentBtn btn btn-primary mt-1" id="commentBtn{{post.id}}, {{logged_in}}"
         onclick="showComForm(this)">
         Comment
     </button>
@@ -61,4 +62,9 @@
 </div>
 {{/if}}
 
-<script src="/js/homepage.js"></script>
+<!-- For some reason, handlebars do not let me check logged_in condition within the each sections. That's why this awkward solution was made -->
+{{#if logged_in}}
+<script src="/js/comments.js"></script>
+{{else}}
+<script src="/js/nocomments.js"></script>
+{{/if}}
