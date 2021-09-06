@@ -1,17 +1,44 @@
 <!-- If any posts exist, display them all -->
 {{#if posts.length}}
 {{#each posts as |post|}}
-<div class="post" id="post{{post.id}}" onclick="focusPost(this)">
-    <h2>{{post.title}}</h2>
-    <h3>Posted by {{post.user.name}} on {{format_time post.created_date}}</h3>
-    <p>{{post.text}}</p>
+<div class="post" data-id="{{post.id}}">
+    <div class="postCard card mt-5" onclick="focusPost(this)">
+        <div class="card-header">
+            {{post.title}}
+        </div>
+        <div class="card-body">
+            <p>{{post.text}}</p>
+        </div>
+        <div class="card-footer text-muted">
+            Posted by <cite title="userName">{{post.user.name}}</cite> on {{format_time post.created_date}}
+        </div>
+    </div>
+
+    <!-- This Comment button will reveal the comment form -->
+    <button type="button" class="commentBtn btn btn-primary mt-1" onclick="showComForm(this)">
+        Comment
+    </button>
 </div>
-<hr>
+
+<!-- When users click the comment button, a form will display below the post -->
+<div class="comment card mt-2" id="comForm{{post.id}}" data-id="{{post.id}}" style="display:none">
+    <div class="card-body">
+        <textarea id="commentText{{post.id}}" name="commentText" class="form-control" rows="4"></textarea>
+    </div>
+    <div class="card-footer text-muted">
+        <button id="postComBtn btn btn-primary" onclick="postComment(this)">Post Comment</button>
+    </div>
+</div>
+
 <!-- Display every comment to this post -->
 {{#each post.comments as |comment|}}
-<div class="comment">
-    <p>{{comment.text}}</p>
-    <h4>Posted by {{comment.user.name}} on {{format_time comment.created_date}}</h4>
+<div class="comment card my-5" id="post{{post.id}}">
+    <div class="card-body">
+        <p>{{comment.text}}</p>
+    </div>
+    <div class="card-footer text-muted">
+        Posted by <cite title="userName">{{comment.user.name}}</cite> on {{format_time comment.created_date}}
+    </div>
 </div>
 {{/each}}
 
@@ -19,9 +46,16 @@
 
 <!-- If no posts have been made, show a generic message -->
 {{else}}
-<div id="post0" class="post">
-    <h2>Nobody has posted anything!</h2>
-    <p>Be the first to post something</p>
+<div class="post card my-5">
+    <div class="card-header">
+        No Posts
+    </div>
+    <div class="card-body">
+        <p>Nobody has made a post yet. Be the first!</p>
+    </div>
+    <div class="card-footer text-muted">
+        Posted by Admin
+    </div>
 </div>
 {{/if}}
 

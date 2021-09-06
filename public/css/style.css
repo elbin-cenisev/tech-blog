@@ -1,5 +1,14 @@
-.post:hover
-{
-    background-color: yellow;
+.post {
+    margin: auto;
+    width: 50%;
+}
+.postCard:hover {
     cursor: pointer;
+}
+.comment {
+    margin: auto;
+    width: 40%;
+}
+.commentBtn {
+    width: 25%;
 }
