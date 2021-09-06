@@ -32,7 +32,7 @@ router.get('/comment', async (req, res) => {
     }
 });
 
-// Finds specific post by id. Used when you click on a post on the homepage
+// Finds specific post by post_id. Used when you click on a post on the homepage
 router.get('/:id', withAuth, async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
@@ -55,7 +55,7 @@ router.get('/:id', withAuth, async (req, res) => {
 // Create a new post. Used on the Dashboard screen.
 router.post('/', async (req, res) => {
     // Some kind of bug didn't allow me to directly reference req.session.user_id in the Post.Create()
-    let userID = req.session.user_id; 
+    let userID = req.session.user_id;
     try {
         const postData = await Post.create({
             title: req.body.title,

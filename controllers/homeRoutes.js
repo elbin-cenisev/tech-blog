@@ -4,19 +4,19 @@ const { Post, User, Comment } = require('./../models');
 // Homepage: Displays all posts, and also shows the name of the user that wrote each of them
 router.get('/', async (req, res) => {
   try {
-      const postData = await Post.findAll({
-          include: [
-              { model: User, attributes: ['name'] },
-              { model: Comment, include: [{ model: User }], },
-          ],
-      });
-      const posts = postData.map((post) => post.get({ plain: true }));
-      res.render('homepage', {
-          posts,
-          logged_in: req.session.logged_in
-      });
+    const postData = await Post.findAll({
+      include: [
+        { model: User, attributes: ['name'] },
+        { model: Comment, include: [{ model: User }], },
+      ],
+    });
+    const posts = postData.map((post) => post.get({ plain: true }));
+    res.render('homepage', {
+      posts,
+      logged_in: req.session.logged_in
+    });
   } catch (err) {
-      res.status(500).json(err);
+    res.status(500).json(err);
   }
 });
 
@@ -24,7 +24,21 @@ router.get('/', async (req, res) => {
 router.get('/dashboard', async (req, res) => {
   try {
     if (req.session.logged_in) {
-      res.render('dashboard', { logged_in: req.session.logged_in });
+      const userID = req.session.user_id;
+      const postData = await Post.findAll({
+        where: {
+          user_id: userID
+        },
+        include: [
+          { model: User, attributes: ['name'] },
+          { model: Comment, include: [{ model: User }], },
+        ],
+      });
+      const posts = postData.map((post) => post.get({ plain: true }));
+      res.render('dashboard', { 
+        posts, 
+        logged_in: req.session.logged_in 
+      });
     }
     else {
       res.render('login');
