@@ -9,3 +9,28 @@ function showForm() {
         showButton.textContent = "Create Post";
     }
 }
+
+async function createPost() {
+    event.preventDefault();
+
+    const title = document.querySelector('#postTitle').value;
+    const text = document.querySelector('#postText').value;
+    const created_date = new Date();
+
+    if (title && text) {
+        const response = await fetch('/api/post/', {
+            method: 'POST',
+            body: JSON.stringify({ title, text, created_date }),
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+        if (response.ok) {
+            document.location.replace('/');
+        } else {
+            alert(response.statusText);
+        }
+    }
+    else {
+        alert("You have not entered all necessary information yet.");
+    }
+}
