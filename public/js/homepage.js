@@ -1,11 +1,22 @@
+// Shows the form used to create a comment
 function showComForm(button) {
-    let post = button.parentElement;
-    let post_id = post.dataset.id;
+    let post_id = button.parentElement.dataset.id;
 
     var commentForm = document.getElementById(`comForm${post_id}`);
     if (commentForm.style.display === "none") {
         commentForm.style.display = "block";
         button.style.display = "none";
+    }
+}
+
+function cancelComment(button) {
+    let post = button.parentElement.parentElement;
+    let post_id = post.dataset.id;
+
+    var commentForm = document.getElementById(`comForm${post_id}`);
+    if (commentForm.style.display === "block") {
+        commentForm.style.display = "none";
+        document.getElementById(`commentBtn${post_id}`).style.display="block";
     }
 }
 

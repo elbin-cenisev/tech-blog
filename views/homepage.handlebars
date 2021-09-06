@@ -15,7 +15,8 @@
     </div>
 
     <!-- This Comment button will reveal the comment form -->
-    <button type="button" class="commentBtn btn btn-primary mt-1" onclick="showComForm(this)">
+    <button type="button" class="commentBtn btn btn-primary mt-1" id="commentBtn{{post.id}}"
+        onclick="showComForm(this)">
         Comment
     </button>
 </div>
@@ -26,7 +27,8 @@
         <textarea id="commentText{{post.id}}" name="commentText" class="form-control" rows="4"></textarea>
     </div>
     <div class="card-footer text-muted">
-        <button id="postComBtn btn btn-primary" onclick="postComment(this)">Post Comment</button>
+        <button id="postComBtn btn btn-primary mx-1" onclick="postComment(this)">Post Comment</button>
+        <button id="cancelComBtn btn btn-primary mx-1" onclick="cancelComment(this)">Cancel</button>
     </div>
 </div>
 
