@@ -1,1 +1,24 @@
-<p>You are inside the Dashboard!</p>
+<!-- Option to create a new post -->
+<h1>Dashboard</h1>
+<button id="showPostForm" onclick="showForm()">Create Post</button>
+<form id="newPostForm" style="display:none;">
+    <label for="postTitle">Title:</label><br>
+    <input type="text" id="postTitle" name="postTitle"><br>
+    <label for="postText">Content:</label><br>
+    <textarea id="postText" name="postText" rows="4" cols="50"></textarea><br>
+    <button id="postComment">Post</button>
+</form>
+
+<!-- Display all comments the currently logged in user has made -->
+{{#if posts.length}}
+{{#each posts as |post|}}
+<div class="post" id="post{{post.id}}">
+    <h2>{{post.title}}</h2>
+    <p>{{post.text}}</p>
+    <h3>You posted this on {{format_time post.created_date}}</h3>
+</div>
+<hr>
+{{/each}}
+{{/if}}
+
+<script src="/js/dashboard.js"></script>
