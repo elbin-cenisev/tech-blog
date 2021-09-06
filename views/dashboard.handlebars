@@ -12,16 +12,21 @@
 <!-- Display all comments the currently logged in user has made -->
 {{#if posts.length}}
 {{#each posts as |post|}}
-<div class="post" id="post{{post.id}}">
-    <div onclick="showDeleteUpdate()">
+<div id="post{{post.id}}">
+    <div class="post" id="regularForm" onclick="showDeleteUpdate()" style="display:block;">
         <h2>{{post.title}}</h2>
         <p>{{post.text}}</p>
         <h3>You posted this on {{format_time post.created_date}}</h3>
     </div>
 
     <form id="updateForm" style="display:none;">
-        <button id="deleteBtn" onclick="deletePost(this)">Delete</button>
+        <label for="editTitle">Title:</label><br>
+        <input type="text" id="editTitle" name="editTitle" value="{{post.title}}"><br>
+        <label for="editText">Content:</label><br>
+        <textarea id="editText" name="editText" rows="4" cols="50">{{post.text}}</textarea><br>
+
         <button id="updateBtn" onclick="updatePost(this)">Edit</button>
+        <button id="deleteBtn" onclick="deletePost(this)">Delete</button>
     </form>
 </div>
 <hr>

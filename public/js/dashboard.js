@@ -11,11 +11,15 @@ function showForm() {
 }
 
 function showDeleteUpdate() {
+    var regularForm = document.getElementById("regularForm")
     var updateForm = document.getElementById("updateForm");
+
     if (updateForm.style.display === "none") {
         updateForm.style.display = "block";
+        regularForm.style.display = "none";
     } else {
         updateForm.style.display = "none";
+        regularForm.style.display = "block";
     }
 }
 
@@ -45,7 +49,7 @@ async function createPost() {
 }
 
 async function deletePost(item) {
-    let post_id = item.parentElement.parentElement.id.substring(4,5);
+    let post_id = item.parentElement.parentElement.id.substring(4, 5);
     const response = await fetch(`/api/post/${post_id}`, {
         method: 'DELETE',
     });
@@ -57,6 +61,21 @@ async function deletePost(item) {
     }
 }
 
-async function updatePost() {
+async function updatePost(item) {
+    let post_id = item.parentElement.parentElement.id.substring(4, 5);
+    const title = document.querySelector('#editTitle').value;
+    const text = document.querySelector('#editText').value;
+    const created_date = new Date();
 
+    const response = await fetch(`/api/post/${post_id}`, {
+        method: 'PUT',
+        body: JSON.stringify({ title, text, created_date }),
+        headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+        document.location.replace('/dashboard');
+    } else {
+        alert(response.statusText);
+    }
 }

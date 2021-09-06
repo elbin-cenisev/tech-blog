@@ -100,5 +100,25 @@ router.delete('/:post_id', (req, res) => {
         .catch((err) => res.json(err));
 });
 
+// Edits a post
+router.put('/:post_id', (req, res) => {
+    Post.update(
+        {
+            title: req.body.title,
+            text: req.body.text,
+            created_date: req.body.created_date
+        },
+        {
+            where: {
+                id: req.params.post_id,
+            },
+        }
+    )
+        .then((updatedPost) => {
+            res.json(updatedPost);
+        })
+        .catch((err) => res.json(err));
+});
+
 
 module.exports = router;
