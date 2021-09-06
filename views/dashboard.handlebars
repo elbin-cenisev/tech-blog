@@ -13,14 +13,21 @@
 {{#if posts.length}}
 {{#each posts as |post|}}
 <div class="post" id="post{{post.id}}">
-    <h2>{{post.title}}</h2>
-    <p>{{post.text}}</p>
-    <h3>You posted this on {{format_time post.created_date}}</h3>
+    <div onclick="showDeleteUpdate()">
+        <h2>{{post.title}}</h2>
+        <p>{{post.text}}</p>
+        <h3>You posted this on {{format_time post.created_date}}</h3>
+    </div>
+
+    <form id="updateForm" style="display:none;">
+        <button id="deleteBtn" onclick="deletePost()">Delete</button>
+        <button id="updateBtn" onclick="updatePost()">Edit</button>
+    </form>
 </div>
 <hr>
 {{/each}}
 {{else}}
-<div class="post" id="post0">
+<div class="post" onclick="test()" id="post{{post.id}}">
     <h2>You have not posted anything</h2>
     <p>Click the "Create Post" button to post something</p>
 </div>

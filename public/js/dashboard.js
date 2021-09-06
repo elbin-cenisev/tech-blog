@@ -10,6 +10,15 @@ function showForm() {
     }
 }
 
+function showDeleteUpdate() {
+    var updateForm = document.getElementById("updateForm");
+    if (updateForm.style.display === "none") {
+        updateForm.style.display = "block";
+    } else {
+        updateForm.style.display = "none";
+    }
+}
+
 async function createPost() {
     event.preventDefault();
 
@@ -33,4 +42,12 @@ async function createPost() {
     else {
         alert("You have not entered all necessary information yet.");
     }
+}
+
+async function deletePost() {
+
+}
+
+async function updatePost() {
+    
 }
