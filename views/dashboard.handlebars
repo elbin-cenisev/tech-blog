@@ -20,14 +20,14 @@
     </div>
 
     <form id="updateForm" style="display:none;">
-        <button id="deleteBtn" onclick="deletePost()">Delete</button>
-        <button id="updateBtn" onclick="updatePost()">Edit</button>
+        <button id="deleteBtn" onclick="deletePost(this)">Delete</button>
+        <button id="updateBtn" onclick="updatePost(this)">Edit</button>
     </form>
 </div>
 <hr>
 {{/each}}
 {{else}}
-<div class="post" onclick="test()" id="post{{post.id}}">
+<div>
     <h2>You have not posted anything</h2>
     <p>Click the "Create Post" button to post something</p>
 </div>

@@ -5,6 +5,9 @@ const { Post, User, Comment } = require('./../models');
 router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
+      order: [
+        ['id', 'DESC'],
+      ],
       include: [
         { model: User, attributes: ['name'] },
         { model: Comment, include: [{ model: User }], },
@@ -29,15 +32,18 @@ router.get('/dashboard', async (req, res) => {
         where: {
           user_id: userID
         },
+        order: [
+          ['id', 'DESC'],
+        ],
         include: [
           { model: User, attributes: ['name'] },
           { model: Comment, include: [{ model: User }], },
         ],
       });
       const posts = postData.map((post) => post.get({ plain: true }));
-      res.render('dashboard', { 
-        posts, 
-        logged_in: req.session.logged_in 
+      res.render('dashboard', {
+        posts,
+        logged_in: req.session.logged_in
       });
     }
     else {

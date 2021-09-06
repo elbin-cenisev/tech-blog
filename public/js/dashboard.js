@@ -34,7 +34,7 @@ async function createPost() {
         });
 
         if (response.ok) {
-            document.location.replace('/');
+            document.location.replace('/dashboard');
         } else {
             alert(response.statusText);
         }
@@ -44,10 +44,19 @@ async function createPost() {
     }
 }
 
-async function deletePost() {
+async function deletePost(item) {
+    let post_id = item.parentElement.parentElement.id.substring(4,5);
+    const response = await fetch(`/api/post/${post_id}`, {
+        method: 'DELETE',
+    });
 
+    if (response.ok) {
+        document.location.replace('/dashboard');
+    } else {
+        alert(response.statusText);
+    }
 }
 
 async function updatePost() {
-    
+
 }

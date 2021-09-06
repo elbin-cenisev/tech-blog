@@ -86,5 +86,19 @@ router.post('/comment', async (req, res) => {
     }
 });
 
+// Deletes a post
+router.delete('/:post_id', (req, res) => {
+    // Looks for the books based on isbn given in the request parameters and deletes the instance from the database
+    Post.destroy({
+        where: {
+            id: req.params.post_id,
+        },
+    })
+        .then((deletedPost) => {
+            res.json(deletedPost);
+        })
+        .catch((err) => res.json(err));
+});
+
 
 module.exports = router;
