@@ -1,4 +1,43 @@
-<h2>Login:</h2>
+<div class="py-5 text-center">
+    <h2>Login</h2>
+    <p class="lead">If you are an existing user, please use this form to login<br>
+        If you are new to the blog and would like to register
+        Please click the Sign Up button below!<br></p>
+    <!-- Option to create a new post -->
+    <button class="post" id="signupBtn" onclick="showSignUp(this)">Sign Up</button>
+</div>
+
+<form id="loginForm" class="post">
+    <div class="mb-3">
+        <label for="loginEmail" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="loginPassword" class="form-label">Password</label>
+        <input type="password" class="form-control" id="loginPassword">
+    </div>
+    <button type="submit" class="btn btn-primary" id="loginBtn" onclick="login(this)">Login</button>
+</form>
+
+<form id="signUpForm" class="post" style="display:none;">
+    <div class="mb-3">
+        <label for="signUpName" class="form-label">Username:</label>
+        <input type="text" class="form-control" id="signUpName">
+    </div>
+    <div class="mb-3">
+        <label for="signUpEmail" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="signUpEmail" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-3">
+        <label for="signUpPassword" class="form-label">Password</label>
+        <input type="password" class="form-control" id="signUpPassword">
+    </div>
+    <button type="submit" class="btn btn-primary" id="signUpBtn" onclick="signUp(this)">Sign up</button>
+    <button type="submit" class="btn btn-primary" id="backToLoginBtn" onclick="showLogin(this)">Already a User</button>
+</form>
+
+{{!-- <h2>Login:</h2>
 <form id="loginForm">
     <label for="loginEmail">Email:</label><br>
     <input type="text" id="loginEmail" name="loginEmail"><br>
@@ -16,6 +55,6 @@
     <label for="userPassword">Password:</label><br>
     <input type="password" id="userPassword" name="userPassword"><br><br>
     <button id="registerBtn">Register</button>
-</form>
+</form> --}}
 
 <script src="/js/login.js"></script>

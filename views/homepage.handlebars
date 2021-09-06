@@ -1,3 +1,12 @@
+<div class="text-center">
+    <h2>Homepage</h2>
+    <p class="lead">Welcome to the Tech Blog!<br><br>
+        Below, you can see everyone's posts and comments. If you want to make your own post, log in and go to the <br>
+        Dashboard. You can comment on any post by selecting the comment button.
+        If you are a new user, click on the login button and select the Sign Up option<br><br>
+        Have fun!!</p>
+</div>
+<hr>
 <!-- If any posts exist, display them all -->
 {{#if posts.length}}
 {{#each posts as |post|}}
@@ -23,7 +32,7 @@
 </div>
 
 <!-- When users click the comment button, a form will display below the post -->
-<div class="comment card mt-2" id="comForm{{post.id}}" data-id="{{post.id}}" style="display:none">
+<div class="comment card" id="comForm{{post.id}}" data-id="{{post.id}}" style="display:none">
     <div class="card-body">
         <textarea id="commentText{{post.id}}" name="commentText" class="form-control" rows="4"></textarea>
     </div>
@@ -33,6 +42,7 @@
     </div>
 </div>
 
+<h4 class="text-center mt-3">Comments</h4>
 <!-- Display every comment to this post -->
 {{#each post.comments as |comment|}}
 <div class="comment card my-5" id="post{{post.id}}">
@@ -44,7 +54,7 @@
     </div>
 </div>
 {{/each}}
-
+<hr>
 {{/each}}
 
 <!-- If no posts have been made, show a generic message -->

@@ -1,33 +1,26 @@
-function showForm() {
-    var postForm = document.getElementById("newPostForm");
-    var showButton = document.getElementById("showPostForm")
-    if (postForm.style.display === "none") {
-        postForm.style.display = "block";
-        showButton.textContent = "Cancel";
-    } else {
-        postForm.style.display = "none";
-        showButton.textContent = "Create Post";
+function showForm(button) {
+    let newPostForm = document.getElementById("newPostForm");
+    if (newPostForm.style.display === "none") {
+        newPostForm.style.display = "block";
+        button.style.display = "none";
     }
 }
 
-function showDeleteUpdate() {
-    var regularForm = document.getElementById("regularForm")
-    var updateForm = document.getElementById("updateForm");
+function cancelNewPost(button) {
+    let newPostForm = document.getElementById("newPostForm");
+    let newPostButton = document.getElementById("showPostForm");
 
-    if (updateForm.style.display === "none") {
-        updateForm.style.display = "block";
-        regularForm.style.display = "none";
-    } else {
-        updateForm.style.display = "none";
-        regularForm.style.display = "block";
+    if (newPostForm.style.display === "block") {
+        newPostForm.style.display = "none";
+        newPostButton.style.display = "block";
     }
 }
 
-async function createPost() {
+async function postNewPost(button) {
     event.preventDefault();
 
-    const title = document.querySelector('#postTitle').value;
-    const text = document.querySelector('#postText').value;
+    const title = document.querySelector('#newPostTitle').value;
+    const text = document.querySelector('#newPostText').value;
     const created_date = new Date();
 
     if (title && text) {
@@ -48,8 +41,8 @@ async function createPost() {
     }
 }
 
-async function deletePost(item) {
-    let post_id = item.parentElement.parentElement.id.substring(4, 5);
+async function deletePost(button) {
+    let post_id = button.parentElement.dataset.id;
     const response = await fetch(`/api/post/${post_id}`, {
         method: 'DELETE',
     });
@@ -61,10 +54,36 @@ async function deletePost(item) {
     }
 }
 
-async function updatePost(item) {
-    let post_id = item.parentElement.parentElement.id.substring(4, 5);
-    const title = document.querySelector('#editTitle').value;
-    const text = document.querySelector('#editText').value;
+function showEditForm(button) {
+    let post_id = button.parentElement.dataset.id;
+    let editPostForm = document.getElementById("editPostForm");
+    let editDeleteForm = document.getElementById(`editDeleteForm${post_id}`);
+    let postForm = document.getElementById(`post${post_id}`)
+
+    if (editPostForm.style.display === "none") {
+        editPostForm.style.display = "block";
+        editDeleteForm.style.display = "none";
+        postForm.style.display = "none";
+    }
+}
+
+function cancelEdit(button) {
+    let post_id = button.parentElement.parentElement.dataset.id;
+    let editPostForm = document.getElementById("editPostForm");
+    let editDeleteForm = document.getElementById(`editDeleteForm${post_id}`);
+    let postForm = document.getElementById(`post${post_id}`)
+
+    if (editPostForm.style.display === "block") {
+        editPostForm.style.display = "none";
+        editDeleteForm.style.display = "block";
+        postForm.style.display = "block";
+    }
+}
+
+async function postEdittedPost(button) {
+    let post_id = button.parentElement.parentElement.dataset.id;
+    const title = document.querySelector('#editPostTitle').value;
+    const text = document.querySelector('#editPostText').value;
     const created_date = new Date();
 
     const response = await fetch(`/api/post/${post_id}`, {
@@ -79,3 +98,28 @@ async function updatePost(item) {
         alert(response.statusText);
     }
 }
+
+// async function createPost() {
+//     event.preventDefault();
+
+//     const title = document.querySelector('#postTitle').value;
+//     const text = document.querySelector('#postText').value;
+//     const created_date = new Date();
+
+//     if (title && text) {
+//         const response = await fetch('/api/post/', {
+//             method: 'POST',
+//             body: JSON.stringify({ title, text, created_date }),
+//             headers: { 'Content-Type': 'application/json' },
+//         });
+
+//         if (response.ok) {
+//             document.location.replace('/dashboard');
+//         } else {
+//             alert(response.statusText);
+//         }
+//     }
+//     else {
+//         alert("You have not entered all necessary information yet.");
+//     }
+// }

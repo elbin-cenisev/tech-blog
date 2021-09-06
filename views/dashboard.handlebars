@@ -1,5 +1,72 @@
-<!-- Option to create a new post -->
-<h1>Dashboard</h1>
+<div class="py-5 text-center">
+    <h2>My Dashboard</h2>
+    <p class="lead">All of your posts are displayed here.<br>
+        You can edit or delete any of them by clicking the appropriate buttons.<br>
+        If you want to create a new post, click the button below!<br></p>
+
+    <!-- Option to create a new post -->
+    <button class="post" id="showPostForm" onclick="showForm(this)">Create New Post</button>
+
+    <!-- If button is clicked, the new post form will appear -->
+    <div class="post card mt-2" id="newPostForm" style="display:none">
+        <div class="card-header">
+            <label for="newPostTitle">Title:</label>
+            <input type="text" id="newPostTitle" name="newPostTitle">
+        </div>
+        <div class="card-body">
+            <textarea id="newPostText" name="newPostText" class="form-control" rows="4"></textarea>
+        </div>
+        <div class="card-footer text-muted">
+            <button id="postBtn btn btn-primary mx-1" onclick="postNewPost(this)">Post</button>
+            <button id="cancelBtn btn btn-primary mx-1" onclick="cancelNewPost(this)">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<!-- Show all posts the logged_in user has made -->
+{{#if posts.length}}
+{{#each posts as |post|}}
+<div class="post" id="post{{post.id}}" data-id="{{post.id}}">
+    <div class="postCard card mt-5">
+        <div class="card-header">
+            {{post.title}}
+        </div>
+        <div class="card-body">
+            <p>{{post.text}}</p>
+        </div>
+        <div class="card-footer text-muted">
+            Posted on {{format_time post.created_date}}
+        </div>
+    </div>
+</div>
+
+<!-- When the Edit button is selected, the edit form appears while the original post card is hidden -->
+<div class="post card mt-2" id="editPostForm" data-id="{{post.id}}" style="display:none">
+    <div class="card-header">
+        <label for="editPostTitle">Title:</label>
+        <input type="text" id="editPostTitle" name="editPostTitle" value="{{post.title}}">
+    </div>
+    <div class="card-body">
+        <textarea id="editPostText" name="editPostText" class="form-control" rows="4">{{post.text}}</textarea>
+    </div>
+    <div class="card-footer text-muted">
+        <button id="postBtn btn btn-primary mx-1" onclick="postEdittedPost(this)">Post</button>
+        <button id="cancelBtn btn btn-primary mx-1" onclick="cancelEdit(this)">Cancel</button>
+    </div>
+</div>
+
+<!-- The edit and delete post buttons only appear after clicking on the post -->
+<div class="post my-1" id="editDeleteForm{{post.id}}" data-id="{{post.id}}">
+    <button id="updateBtn" onclick="showEditForm(this)">Edit Post</button>
+    <button id="deleteBtn" onclick="deletePost(this)">Delete</button>
+</div>
+
+
+{{/each}}
+{{/if}}
+
+
+{{!-- <h1>Dashboard</h1>
 <button id="showPostForm" onclick="showForm()">Create Post</button>
 <form id="newPostForm" style="display:none;">
     <label for="postTitle">Title:</label><br>
@@ -36,6 +103,6 @@
     <h2>You have not posted anything</h2>
     <p>Click the "Create Post" button to post something</p>
 </div>
-{{/if}}
+{{/if}} --}}
 
 <script src="/js/dashboard.js"></script>
