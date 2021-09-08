@@ -34,7 +34,7 @@
 <!-- When users click the comment button, a form will display below the post -->
 <div class="comment card" id="comForm{{post.id}}" data-id="{{post.id}}" style="display:none">
     <div class="card-body">
-        <textarea id="commentText{{post.id}}" name="commentText" class="form-control" rows="4"></textarea>
+        <textarea id="commentText{{post.id}}" maxlength="500" name="commentText" class="form-control" rows="4"></textarea>
     </div>
     <div class="card-footer text-muted">
         <button id="postComBtn btn btn-primary mx-1" onclick="postComment(this)">Post Comment</button>
