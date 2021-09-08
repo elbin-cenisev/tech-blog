@@ -11,14 +11,14 @@ function showComForm(button) {
 
 // Basically hides the form and makes Comment button reappear
 function cancelComment(button) {
-    let post = button.parentElement.parentElement;
-    let post_id = post.dataset.id;
+    let post_id = button.parentElement.parentElement.dataset.id;
 
-    var commentForm = document.getElementById(`comForm${post_id}`);
-    if (commentForm.style.display === "block") {
-        commentForm.style.display = "none";
-        document.getElementById(`commentBtn${post_id}`).style.display="block";
-    }
+    let commentForm = document.getElementById(`comForm${post_id}`);
+    let commentBtn = document.getElementById(`commentBtn${post_id}`);
+
+    commentForm.style.display = "none";
+    commentBtn.style.display = "block";
+
 }
 
 // Creates the comment
