@@ -3,6 +3,9 @@
 ## Description
 Based on Assignment 14 of the Full Stack Bootcamp. Create a website that will allow users to communicate with each other.
 
+## User Experience
+This is a simple website designed to give users the ability to communicate with one another. Users can post whatever thoughts they have on current (or past) technologies, and other users can engage with them through the comment section.
+
 ## Technologies Used
 Node, Express, Sequelize, express, express-sessions, Bcrypt, JavaScript, Handlebars, dotenv, JS, HTML, CSS, Bootstrap
 
